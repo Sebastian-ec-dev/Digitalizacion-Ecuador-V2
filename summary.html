@@ -490,7 +490,7 @@
             const res = await fetch("data.json");
             const data = await res.json();
 
-            timelineData = Array.isArray(data?.timeline) ? data.timeline : [];
+            timelineData = Array.isArray(data?.timeline) ? data.timeline.slice(0,-1) : [];
             if (!timelineData.length) {
                 document.getElementById("by-category").innerHTML =
                     `<p class="text-slate-400">No se encontró <code class="text-slate-200">timeline</code> en data.json o está vacío.</p>`;
@@ -518,4 +518,5 @@
 </script>
 </body>
 </html>
+
 
