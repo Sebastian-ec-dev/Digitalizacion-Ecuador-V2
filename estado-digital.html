@@ -584,7 +584,7 @@
     try{
       const res = await fetch("data.json");
       const data = await res.json();
-      timelineData = Array.isArray(data?.timeline) ? data.timeline : [];
+      timelineData = Array.isArray(data?.timeline) ? data.timeline.slice(0,-1) : [];
 
       if (!timelineData.length) {
         document.getElementById("top5").innerHTML =
@@ -623,4 +623,5 @@
 </script>
 </body>
 </html>
+
 
