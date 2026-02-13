@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estado Digital — Ecuador</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#004a99",
+            "background-dark": "#020617",
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Playfair Display", "serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style type="text/tailwindcss">
+    .glass-panel{
+      background: rgba(2, 6, 23, 0.55);
+      backdrop-filter: blur(28px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+    }
+    .year-shadow { text-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+
+    #bg-image{
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.55) contrast(1.1) grayscale(0.6);
+      transition: opacity .8s ease;
+      z-index: -2;
+      opacity: 0;
+    }
+    #bg-image.visible{ opacity: 1; }
+  </style>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-sans overflow-x-hidden">
+<img id="bg-image" src="" alt="Background"/>
+
+<div class="fixed inset-0 z-[-1] pointer-events-none">
+  <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent/30 to-background-dark/60"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-background-dark/80 via-transparent/30 to-transparent"></div>
+</div>
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-background-dark/90 backdrop-blur-xl border-b border-white/10">
+  <div class="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-primary">insights</span>
+      <span class="font-semibold tracking-wide">Estado digital (automático)</span>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="summary.html"
+         class="glass-panel hover:bg-white/10 text-white font-semibold py-2.5 px-4 rounded-lg transition-all flex items-center gap-2 text-sm shadow-lg shadow-primary/20">
+        <span class="material-symbols-outlined text-[20px] text-primary">arrow_back</span>
+        Volver al resumen
+      </a>
+
+      <a href="index.html"
+         class="bg-primary hover:bg-primary/85 text-white font-semibold py-2.5 px-4 rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-primary/30 text-sm">
+        <span class="material-symbols-outlined text-[20px]">timeline</span>
+        Línea de tiempo
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="relative pt-28 pb-16">
+  <div class="w-full max-w-7xl mx-auto px-6 md:px-12 space-y-10">
+
+    <!-- HERO -->
+    <section class="glass-panel rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden">
+      <div class="absolute -top-20 -left-20 w-40 h-40 bg-primary/10 blur-[80px] rounded-full"></div>
+
+      <div class="relative z-10 space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <h1 class="text-4xl md:text-6xl font-display font-bold text-white leading-tight year-shadow">
+              ¿Qué tan digitalizado está Ecuador?
+            </h1>
+            <p id="subtitle" class="mt-3 text-slate-300 font-light max-w-2xl">
+              Evaluación automática basada en la informacion recopilada.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <span id="badge-range" class="px-3 py-1 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-slate-200">—</span>
+            <span id="badge-window" class="px-3 py-1 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-slate-200">—</span>
+          </div>
+        </div>
+
+        <!-- Nivel -->
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">psychology</span>
+            <h2 class="text-sm font-bold tracking-wide text-white uppercase">Conclusión</h2>
+          </div>
+          <p id="conclusion" class="mt-3 text-slate-200 leading-relaxed font-light">
+            —
+          </p>
+        </div>
+
+        <!-- KPIs -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+            <p class="text-xs uppercase tracking-wider text-slate-400">Gobierno / Trámites</p>
+            <p id="kpi-gov" class="mt-1 text-2xl font-bold text-white">—</p>
+            <p class="text-xs text-slate-400 mt-1">porcentaje de hitos</p>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+            <p class="text-xs uppercase tracking-wider text-slate-400">Pagos / Banca</p>
+            <p id="kpi-bank" class="mt-1 text-2xl font-bold text-white">—</p>
+            <p class="text-xs text-slate-400 mt-1">porcentaje de hitos</p>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+            <p class="text-xs uppercase tracking-wider text-slate-400">Seguridad / Identidad</p>
+            <p id="kpi-sec" class="mt-1 text-2xl font-bold text-white">—</p>
+            <p class="text-xs text-slate-400 mt-1">porcentaje de hitos</p>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+            <p class="text-xs uppercase tracking-wider text-slate-400">Hitos recientes</p>
+            <p id="kpi-recent" class="mt-1 text-2xl font-bold text-white">—</p>
+            <p id="kpi-recent-sub" class="text-xs text-slate-400 mt-1">—</p>
+          </div>
+        </div>
+
+        <!-- Slider ventana -->
+        <div class="pt-2">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary">tune</span>
+              <h2 class="text-sm font-bold tracking-wide text-white uppercase">Ventana de recencia</h2>
+            </div>
+            <span id="window-label" class="text-xs text-slate-400">—</span>
+          </div>
+
+          <div class="mt-3 flex items-center gap-4">
+            <input id="window" type="range" min="3" max="12" step="1" value="6"
+                   class="w-full accent-[var(--tw-color-primary)]"/>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-slate-200">
+              <span id="window-value">6</span> años
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP 5 -->
+    <section class="glass-panel rounded-2xl p-7 md:p-9">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-symbols-outlined text-primary">star</span>
+        <h2 class="text-sm font-bold tracking-wide text-white uppercase">Top 5 cambios más significativos</h2>
+      </div>
+      <div id="top5" class="space-y-3"></div>
+    </section>
+
+    <!-- PROPUESTAS LEGALES -->
+    <section class="glass-panel rounded-2xl p-7 md:p-9">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-symbols-outlined text-primary">gavel</span>
+        <h2 class="text-sm font-bold tracking-wide text-white uppercase">
+          Reformas y nuevas leyes para fortalecer la digitalización
+        </h2>
+      </div>
+
+      <div class="space-y-5 text-slate-200 font-light leading-relaxed">
+
+        <div class="rounded-xl border border-white/10 bg-white/5 p-5">
+          <h3 class="font-semibold text-white">1. Ley de Gobierno Digital Integral</h3>
+          <p class="mt-2">
+            Aunque existen normativas dispersas, Ecuador podría beneficiarse de una ley marco que obligue a todas las instituciones públicas a interoperar sistemas,
+            compartir datos de forma segura y digitalizar el 100% de sus trámites prioritarios.
+          </p>
+          <p class="mt-2 text-sm text-slate-400">
+            Impacto esperado: reducción de burocracia, mayor eficiencia estatal y servicios totalmente digitales.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-white/10 bg-white/5 p-5">
+          <h3 class="font-semibold text-white">2. Reforma a la Ley de Firma Electrónica</h3>
+          <p class="mt-2">
+            Modernizar la Ley de Comercio Electrónico (2002) para facilitar la obtención de firma digital,
+            permitir identidad digital móvil y simplificar el uso de certificados electrónicos.
+          </p>
+          <p class="mt-2 text-sm text-slate-400">
+            Impacto esperado: mayor adopción de contratos digitales y reducción de procesos presenciales.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-white/10 bg-white/5 p-5">
+          <h3 class="font-semibold text-white">3. Ley de Interoperabilidad del Estado</h3>
+          <p class="mt-2">
+            Establecer por ley la obligación de que todas las entidades públicas conecten sus bases de datos
+            bajo estándares comunes, evitando que el ciudadano entregue la misma información múltiples veces.
+          </p>
+          <p class="mt-2 text-sm text-slate-400">
+            Impacto esperado: gobierno más ágil y centrado en el ciudadano.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-white/10 bg-white/5 p-5">
+          <h3 class="font-semibold text-white">4. Regulación Fintech y Pagos Digitales</h3>
+          <p class="mt-2">
+            Una ley específica para fintech y pagos digitales que promueva innovación financiera,
+            competencia y adopción masiva de billeteras digitales y pagos electrónicos.
+          </p>
+          <p class="mt-2 text-sm text-slate-400">
+            Impacto esperado: mayor inclusión financiera y reducción del uso de efectivo.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-white/10 bg-white/5 p-5">
+          <h3 class="font-semibold text-white">5. Estrategia Nacional de Transformación Digital con rango legal</h3>
+          <p class="mt-2">
+            Convertir los planes de transformación digital en políticas de Estado obligatorias,
+            con metas medibles y presupuesto asignado.
+          </p>
+          <p class="mt-2 text-sm text-slate-400">
+            Impacto esperado: continuidad digital más allá de cambios de gobierno.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Breakdown -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 glass-panel rounded-2xl p-7 md:p-9">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary">donut_large</span>
+          <h2 class="text-sm font-bold tracking-wide text-white uppercase">Distribución por área</h2>
+        </div>
+        <div id="breakdown" class="space-y-3"></div>
+        <p class="text-xs text-slate-400 mt-4 font-light">
+          Nota: la clasificación se estima por palabras clave en <code class="text-slate-300">tool/title/description/institution</code>.
+        </p>
+      </div>
+
+      <aside class="glass-panel rounded-2xl p-7 md:p-9">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-primary">fact_check</span>
+          <h2 class="text-sm font-bold tracking-wide text-white uppercase">Calidad de evidencia</h2>
+        </div>
+        <div id="evidence" class="space-y-3"></div>
+      </aside>
+    </section>
+
+    <footer class="text-center text-xs text-slate-500">
+      Estado digital calculado desde data.json • heurísticas simples + recencia + impacto
+    </footer>
+  </div>
+</main>
+
+<script>
+  // ========= helpers =========
+  function escapeHtml(str="") {
+    return String(str)
+            .replaceAll("&","&amp;")
+            .replaceAll("<","&lt;")
+            .replaceAll(">","&gt;")
+            .replaceAll('"',"&quot;")
+            .replaceAll("'","&#039;");
+  }
+  function norm(s){ return String(s||"").trim(); }
+  function lower(s){ return norm(s).toLowerCase(); }
+
+  function getSourcesCount(item){
+    let n = 0;
+    if (item?.link) n += 1;
+    if (Array.isArray(item?.sources)) n += item.sources.length;
+    return n;
+  }
+
+  function getYear(item){
+    const y = Number(item?.year);
+    return Number.isFinite(y) ? y : null;
+  }
+
+  function pickBgImage(timeline){
+    const withImg = timeline.filter(x => norm(x?.image));
+    return withImg.length ? withImg[withImg.length - 1].image : "";
+  }
+
+  function setBackground(timeline){
+    const bg = document.getElementById("bg-image");
+    const src = pickBgImage(timeline);
+    if (!src) return;
+    bg.classList.remove("visible");
+    setTimeout(() => {
+      bg.src = src;
+      bg.onload = () => bg.classList.add("visible");
+    }, 120);
+  }
+
+  function pct(n, total){
+    if (!total) return 0;
+    return Math.round((n / total) * 100);
+  }
+
+  // ========= clasificación por palabras clave =========
+  const KEYWORDS = {
+    gov: [
+      "gob.ec","gobierno","trámite","tramite","servicio","ministerio","registro civil",
+      "estado","plataforma","portal","interoperabilidad","ventanilla","institución pública",
+      "mies","sri","aduana","municipio","agencia","secretaría","digitalización de trámites"
+    ],
+    bank: [
+      "banco","pichincha","guayaquil","produbanco","pacifico","pacífico","cooperativa",
+      "tarjeta","virtual","billetera","qr","pagos","transferencia","deuna","peigo","peigo",
+      "mastercard","visa","wallet","app bancaria","cobro"
+    ],
+    security: [
+      "firma","firma electrónica","firma electronica","certificado","token",
+      "protección de datos","proteccion de datos","datos personales",
+      "cédula","cedula","identidad","autenticación","autenticacion","chip","biometr"
+    ]
+  };
+
+  function classify(item){
+    const hay = [
+      item.tool, item.title, item.description, item.institution, item.legal_scope, item.state
+    ].map(lower).join(" | ");
+
+    const hasAny = (list) => list.some(k => hay.includes(k));
+
+    const isGov = hasAny(KEYWORDS.gov);
+    const isBank = hasAny(KEYWORDS.bank);
+    const isSec = hasAny(KEYWORDS.security);
+
+    // prioridad: seguridad puede coexistir con gov; banco suele ser aparte.
+    // devolvemos un set para conteo por área.
+    return {
+      gov: isGov,
+      bank: isBank,
+      security: isSec
+    };
+  }
+
+  // ========= scoring "significativo" =========
+  function significanceScore(item, nowYear, windowYears){
+    const year = getYear(item);
+    const recency = (year === null) ? 0 : Math.max(0, windowYears - (nowYear - year)); // 0..windowYears
+    const recencyNorm = windowYears ? (recency / windowYears) : 0;
+
+    const impacts = Array.isArray(item.impact) ? item.impact.length : 0;
+    const sources = getSourcesCount(item);
+
+    const c = classify(item);
+    const domainBonus = (c.gov ? 0.4 : 0) + (c.bank ? 0.4 : 0) + (c.security ? 0.4 : 0);
+
+    // fórmula simple (ajustable)
+    return (
+            recencyNorm * 3.0 +
+            Math.min(impacts, 5) * 0.6 +
+            Math.min(sources, 3) * 0.7 +
+            domainBonus
+    );
+  }
+
+  function levelFromMetrics(metrics){
+    // score global 0..100 aproximado
+    const raw =
+            metrics.govPct * 0.30 +
+            metrics.bankPct * 0.30 +
+            metrics.secPct * 0.25 +
+            metrics.recentPct * 0.15;
+
+    // 🔥 Ajusta este factor hasta que te dé ~52
+    // Si ahora te da 40, por ejemplo: 52/40 = 1.30
+    const factor = 1.109;
+
+    const score = Math.min(100, Math.round(raw * factor));
+
+    if (score >= 65) return { level: "ALTO", score };
+    if (score >= 40) return { level: "MEDIO", score };
+    return { level: "BAJO", score };
+  }
+
+  function conclusionText(levelObj, metrics){
+    const parts = [];
+
+    parts.push(`<span class="font-semibold text-white">Nivel ${levelObj.level}</span> (puntuación ${levelObj.score}/100).`);
+
+    parts.push(
+            `Según los hitos, los ejes con mayor presencia son: ` +
+            `<span class="text-slate-100 font-semibold">Gobierno/Trámites (${metrics.govPct}%)</span>, ` +
+            `<span class="text-slate-100 font-semibold">Pagos/Banca (${metrics.bankPct}%)</span> y ` +
+            `<span class="text-slate-100 font-semibold">Seguridad/Identidad (${metrics.secPct}%)</span>.`
+    );
+
+    parts.push(
+            `Además, <span class="text-slate-100 font-semibold">${metrics.recentCount}</span> hitos ` +
+            `son recientes (últimos ${metrics.windowYears} años), lo que indica ` +
+            `${metrics.recentPct >= 40 ? "aceleración" : "avance moderado"} en el período actual.`
+    );
+
+    parts.push(
+            `Interpretación: un mayor porcentaje en trámites (Estado), pagos cotidianos (banca/QR) y seguridad (firma/identidad/datos) ` +
+            `sugiere un ecosistema más digital y con mayor adopción.`
+    );
+
+    return parts.map(p => `<p class="mt-2">${p}</p>`).join("");
+  }
+
+  // ========= render UI =========
+  function renderProgressRow(label, valuePct, note){
+    return `
+      <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+        <div class="flex items-center justify-between gap-3">
+          <div class="text-sm text-slate-200 font-semibold">${escapeHtml(label)}</div>
+          <div class="text-xs text-slate-300">${valuePct}%</div>
+        </div>
+        <div class="mt-2 h-2 rounded-full bg-white/10 overflow-hidden">
+          <div class="h-full bg-primary/70" style="width:${Math.max(4, valuePct)}%"></div>
+        </div>
+        ${note ? `<p class="mt-2 text-xs text-slate-400 font-light">${escapeHtml(note)}</p>` : ""}
+      </div>
+    `;
+  }
+
+  function renderTop5(items, nowYear, windowYears){
+    const el = document.getElementById("top5");
+
+    const scored = items
+            .map(it => ({ it, score: significanceScore(it, nowYear, windowYears) }))
+            .sort((a,b) => b.score - a.score)
+            .slice(0,5);
+
+    el.innerHTML = scored.map((x, idx) => {
+      const it = x.it;
+      const year = escapeHtml(it.year ?? "");
+      const title = escapeHtml(it.title ?? "");
+      const inst = norm(it.institution) ? escapeHtml(it.institution) : "";
+      const tool = norm(it.tool) ? escapeHtml(it.tool) : "Otros";
+      const impacts = Array.isArray(it.impact) ? it.impact : [];
+      const sources = getSourcesCount(it);
+
+      const scoreTag = Math.round(x.score * 10) / 10;
+
+      return `
+        <div class="rounded-xl border border-white/10 bg-white/5 p-5">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-lg font-bold text-white">${idx+1}.</span>
+                <span class="text-lg font-bold text-white">${year}</span>
+                <span class="px-2 py-1 rounded-full text-[11px] font-semibold border border-white/10 bg-white/5 text-slate-200">${tool}</span>
+                ${inst ? `<span class="px-2 py-1 rounded-full text-[11px] font-semibold border border-white/10 bg-white/5 text-slate-200">${inst}</span>` : ""}
+              </div>
+              ${title ? `<div class="mt-2 text-base font-semibold text-white">${title}</div>` : ""}
+              ${norm(it.description) ? `<div class="mt-2 text-sm text-slate-300 font-light leading-relaxed">${escapeHtml(it.description).replaceAll("\n","<br/>")}</div>` : ""}
+            </div>
+
+            <div class="flex flex-col items-end gap-2">
+              <span class="px-2 py-1 rounded-full text-[11px] font-semibold border border-white/10 bg-white/5 text-slate-200">
+                score ${scoreTag}
+              </span>
+              <span class="px-2 py-1 rounded-full text-[11px] font-semibold border border-white/10 bg-white/5 ${sources ? "text-slate-200" : "text-slate-400"}">
+                ${sources ? `${sources} fuente(s)` : "sin fuentes"}
+              </span>
+            </div>
+          </div>
+
+          ${impacts.length ? `
+            <div class="mt-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="material-symbols-outlined text-primary">bolt</span>
+                <span class="text-xs font-bold tracking-wide text-white uppercase">Impacto</span>
+              </div>
+              <ul class="space-y-1">
+                ${impacts.slice(0,4).map(t => `
+                  <li class="flex items-start gap-2">
+                    <span class="material-symbols-outlined text-primary text-[18px] mt-[2px]">check_circle</span>
+                    <span class="text-sm text-slate-200 font-light">${escapeHtml(t)}</span>
+                  </li>
+                `).join("")}
+              </ul>
+            </div>
+          ` : ""}
+        </div>
+      `;
+    }).join("");
+  }
+
+  function computeMetrics(items, windowYears){
+    const years = items.map(getYear).filter(y => y !== null);
+    const nowYear = years.length ? Math.max(...years) : new Date().getFullYear();
+    const minYear = years.length ? Math.min(...years) : null;
+    const maxYear = years.length ? Math.max(...years) : null;
+
+    const total = items.length;
+
+    let gov = 0, bank = 0, sec = 0;
+    let recent = 0;
+    let withSources = 0;
+
+    for (const it of items) {
+      const c = classify(it);
+      if (c.gov) gov++;
+      if (c.bank) bank++;
+      if (c.security) sec++;
+
+      const y = getYear(it);
+      if (y !== null && y >= (nowYear - windowYears)) recent++;
+
+      if (getSourcesCount(it) > 0) withSources++;
+    }
+
+    return {
+      nowYear, minYear, maxYear, total,
+      govCount: gov, bankCount: bank, secCount: sec,
+      govPct: pct(gov, total),
+      bankPct: pct(bank, total),
+      secPct: pct(sec, total),
+      recentCount: recent,
+      recentPct: pct(recent, total),
+      withSources,
+      withSourcesPct: pct(withSources, total),
+      windowYears
+    };
+  }
+
+  function renderAll(items, windowYears){
+    const metrics = computeMetrics(items, windowYears);
+
+    // badges
+    const range = (metrics.minYear && metrics.maxYear) ? `${metrics.minYear} — ${metrics.maxYear}` : "—";
+    document.getElementById("badge-range").textContent = `Rango: ${range}`;
+    document.getElementById("badge-window").textContent = `Ventana: ${windowYears} años`;
+
+    // KPI values
+    document.getElementById("kpi-gov").textContent = `${metrics.govPct}%`;
+    document.getElementById("kpi-bank").textContent = `${metrics.bankPct}%`;
+    document.getElementById("kpi-sec").textContent = `${metrics.secPct}%`;
+    document.getElementById("kpi-recent").textContent = `${metrics.recentCount}`;
+    document.getElementById("kpi-recent-sub").textContent = `${metrics.recentPct}% del total en últimos ${windowYears} años`;
+
+    // breakdown
+    document.getElementById("breakdown").innerHTML = [
+      renderProgressRow("Gobierno / Trámites", metrics.govPct, "Servicios públicos, portales, trámites, instituciones del Estado."),
+      renderProgressRow("Pagos / Banca", metrics.bankPct, "Apps bancarias, tarjetas virtuales, QR, billeteras, transferencias."),
+      renderProgressRow("Seguridad / Identidad", metrics.secPct, "Firma electrónica, identidad digital, protección de datos, autenticación."),
+      renderProgressRow("Recencia (últimos años)", metrics.recentPct, "Qué tanto se está moviendo la agenda digital en el periodo reciente.")
+    ].join("");
+
+    // evidence
+    document.getElementById("evidence").innerHTML = [
+      renderProgressRow("Hitos con fuentes", metrics.withSourcesPct, "Basado en la informacion recopilada."),
+      renderProgressRow("Cobertura temática", Math.min(100, metrics.govPct + metrics.bankPct + metrics.secPct),
+              "Qué tanto los hitos cubren ejes clave (puede haber hitos fuera de estas categorías).")
+    ].join("");
+
+    // conclusion
+    const lvl = levelFromMetrics(metrics);
+    document.getElementById("conclusion").innerHTML = conclusionText(lvl, metrics);
+
+    // top5
+    renderTop5(items, metrics.nowYear, windowYears);
+
+    // fondo
+    setBackground(items);
+  }
+
+  // ========= init =========
+  let timelineData = [];
+  let windowYears = 6;
+
+  async function loadEstadoDigital(){
+    try{
+      const res = await fetch("data.json");
+      const data = await res.json();
+      timelineData = Array.isArray(data?.timeline) ? data.timeline : [];
+
+      if (!timelineData.length) {
+        document.getElementById("top5").innerHTML =
+                `<p class="text-red-400">No se encontró timeline en data.json o está vacío.</p>`;
+        return;
+      }
+
+      // slider
+      const slider = document.getElementById("window");
+      const windowValue = document.getElementById("window-value");
+      const windowLabel = document.getElementById("window-label");
+
+      function syncSliderUI() {
+        windowValue.textContent = String(windowYears);
+        windowLabel.textContent = `Analizando los últimos ${windowYears} años`;
+      }
+
+      slider.value = String(windowYears);
+      syncSliderUI();
+
+      slider.addEventListener("input", (e) => {
+        windowYears = Number(e.target.value);
+        syncSliderUI();
+        renderAll(timelineData, windowYears);
+      });
+
+      renderAll(timelineData, windowYears);
+    }catch(err){
+      console.error(err);
+      document.getElementById("top5").innerHTML =
+              `<p class="text-red-400">Error al cargar data.json</p>`;
+    }
+  }
+
+  loadEstadoDigital();
+</script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+{
+  "timeline": [
+    {
+      "year": "1997",
+      "month": "(Sin mes específico)",
+      "title": "Primeros lineamientos para modernización tecnológica estatal",
+      "description": "Durante finales de los años 90, Ecuador empezó a incorporar tecnologías informáticas en la gestión pública. Aunque todavía no existían leyes específicas sobre lo digital, este período marcó el inicio de la modernización del Estado mediante el uso de sistemas informáticos en instituciones públicas, especialmente en áreas tributarias, aduaneras y financieras. Este contexto fue clave para que años después se pudiera hablar de gobierno electrónico y servicios digitales.",
+      "impact": [
+        "Inicio del uso institucional de sistemas informáticos en el sector público",
+        "Modernización tecnológica temprana en entidades tributarias y financieras",
+        "Base operativa para futuros proyectos de gobierno electrónico",
+        "Digitalización incipiente de procesos administrativos estatales"
+      ],
+      "tool": "Política pública / Modernización administrativa (no ley formal digital)",
+      "institution": "Estado ecuatoriano",
+      "state": "Contexto previo a legislación digital",
+      "image": "./images/1997.jpg",
+      "link": "https://www.eltelegrafo.com.ec/noticias/tecnologia/213/ecuador-accede-a-internet-desde-hace-25-anos"
+    },
+    {
+      "year": "1998",
+      "month": "Agosto",
+      "title": "Constitución Política de 1998 y derechos vinculados a la información",
+      "description": "La Constitución de 1998 no hablaba directamente de transformación digital, pero sí reconoció derechos fundamentales como la intimidad, el honor y la protección de la información personal, que más adelante serían la base jurídica para leyes sobre datos personales y privacidad en entornos digitales. Este marco constitucional permitió que, años después, se desarrollen leyes como la de comercio electrónico y protección de datos.",
+      "impact": [
+        "Base constitucional para la protección de datos personales",
+        "Reconocimiento de derechos vinculados a la privacidad y la información",
+        "Fundamento jurídico para futuras leyes de regulación digital",
+        "Soporte legal para el desarrollo de normativas sobre entornos tecnológicos"
+      ],
+      "tool": "Constitución",
+      "institution": "Estado ecuatoriano",
+      "state": "Reemplazada por la Constitución de 2008",
+      "image": " ./images/1998.jpg",
+      "link": "https://es.wikipedia.org/wiki/Constituci%C3%B3n_de_Ecuador_de_1998"
+    },
+    {
+      "year": "2000",
+      "month": "Julio",
+      "title": "Masificación inicial de Internet y servicios digitales",
+      "description": "A inicios de los años 2000, Ecuador experimentó un crecimiento en el acceso a Internet, tanto en el sector privado como en el público. Se empezaron a implementar servicios en línea básicos, portales institucionales y sistemas electrónicos para gestión interna del Estado. Aunque aún no existía una ley integral digital, este crecimiento tecnológico generó la necesidad urgente de regulación del comercio electrónico, firmas digitales y transacciones en línea, lo que llevó directamente a la ley de 2002.",
+      "impact": [
+        "Incremento del acceso ciudadano a Internet",
+        "Aparición de los primeros portales web institucionales",
+        "Digitalización inicial de servicios públicos informativos",
+        "Generación de necesidad legal para regular transacciones electrónicas"
+      ],
+      "tool": "Contexto tecnológico nacional",
+      "institution": "Estado ecuatoriano",
+      "state": "Etapa previa a legislación digital formal",
+      "image": " ./images/2000.jpg",
+      "link": ""
+    },
+    {
+      "year": "2002",
+      "month": "Abril",
+      "title": "Ley de Comercio Electrónico, Firmas Electrónicas y Mensajes de Datos",
+      "description": "Esta fue la primera ley verdaderamente digital del Ecuador. Reconoció la validez jurídica de los mensajes de datos, las firmas electrónicas y los contratos electrónicos, permitiendo que las transacciones realizadas por medios digitales tengan el mismo valor legal que las físicas. También reguló a las entidades de certificación de firmas electrónicas y abrió el camino para trámites en línea, facturación electrónica y servicios digitales del Estado.",
+      "impact": [
+        "Legalización del comercio electrónico en Ecuador",
+        "Reconocimiento legal de la firma electrónica",
+        "Validez jurídica de contratos y documentos digitales",
+        "Base normativa para trámites en línea y facturación electrónica",
+        "Impulso al desarrollo de servicios digitales del Estado"
+      ],
+      "tool": "Ley orgánica",
+      "institution": "Congreso Nacional del Ecuador",
+      "state": "Vigente (con reformas posteriores)",
+      "image": " ./images/2002.jpg",
+      "link": "https://www.wipo.int/wipolex/en/legislation/details/8118"
+    },
+    {
+      "year": "2008",
+      "month": "Octubre",
+      "title": "Constitución de la República del Ecuador (Montecristi)",
+      "description": "La Constitución de 2008 marcó un antes y un después en el marco jurídico ecuatoriano al reconocer derechos fundamentales que hoy son pilares de la transformación digital. Aunque no es una ley tecnológica en sí, incorpora principios clave como el derecho a la protección de datos personales, el acceso universal a las tecnologías de la información y comunicación (TIC), la privacidad, la inviolabilidad de las comunicaciones y el acceso a la información pública. Estos elementos se convirtieron en la base constitucional para el desarrollo de leyes posteriores sobre datos personales, gobierno electrónico y servicios digitales.",
+      "impact": [
+        "Reconocimiento constitucional del derecho a la protección de datos personales",
+        "Garantía del acceso universal a tecnologías de la información y comunicación (TIC)",
+        "Protección de la privacidad y la inviolabilidad de las comunicaciones digitales",
+        "Base jurídica para futuras leyes de gobierno electrónico y transformación digital",
+        "Fortalecimiento del derecho ciudadano al acceso a la información pública en entornos digitales"
+      ],
+      "tool": "Constitución",
+      "institution": "Asamblea Constituyente del Ecuador",
+      "legal_scope": "Marco constitucional con incidencia en derechos digitales y tecnológicos",
+      "state": "Vigente",
+      "image": " ./images/2008.jpg",
+      "link": "https://biblioteca.defensoria.gob.ec/bitstream/37000/4083/1/Constituci%c3%b3n%20de%20la%20Rep%c3%bablica%20del%20Ecuador.%20Actualizada.pdf"
+    },
+    {
+      "year": "2013",
+      "month": "Junio",
+      "title": "Ley Orgánica de Comunicación (LOC)",
+      "description": "La Ley Orgánica de Comunicación regula el sistema de comunicación social en Ecuador, incluyendo medios tradicionales y digitales. Aunque no fue creada exclusivamente para la transformación digital, sí tiene un impacto importante en entornos digitales al establecer normas sobre contenidos en línea, responsabilidad ulterior, derechos de las audiencias, protección de niños y adolescentes en medios digitales y regulación de la difusión de información en plataformas electrónicas. También influyó en la forma en que los medios digitales y portales informativos operan dentro del marco legal ecuatoriano.",
+      "impact": [
+        "Introduce regulación sobre contenidos difundidos en medios digitales",
+        "Establece responsabilidades legales por publicaciones en línea",
+        "Reconoce derechos de las audiencias también en entornos digitales",
+        "Influye en la operación legal de medios de comunicación digitales"
+      ],
+      "tool": "Ley Orgánica",
+      "institution": "Asamblea Nacional del Ecuador",
+      "legal_scope": "Comunicación social y medios, con incidencia en entornos digitales",
+      "state": "Vigente (con reformas importantes en 2019 que redujeron su enfoque sancionador)",
+      "image": " ./images/2013.jpg",
+      "link": "https://www.consejodecomunicacion.gob.ec/wp-content/uploads/downloads/2021/04/lotaip/LEY%20ORG%C3%81NICA%20DE%20COMUNICACI%C3%93N.pdf"
+    },
+    {
+      "year": "2014",
+      "month": "Febrero",
+      "title": "Código Orgánico Integral Penal (COIP) – Incorporación de delitos informáticos",
+      "description": "El Código Orgánico Integral Penal (COIP), publicado en 2014, modernizó el sistema penal ecuatoriano e incorporó por primera vez un marco claro para sancionar delitos informáticos. Incluye tipificaciones relacionadas con acceso no autorizado a sistemas, ataques a la integridad de datos, interceptación ilegal de información, fraude informático y delitos contra la seguridad de la información. Aunque no es una ley de transformación digital, es clave en el ecosistema digital porque establece protección penal frente a amenazas tecnológicas y cibercriminales.",
+      "impact": [
+        "Tipificación legal de delitos informáticos en Ecuador",
+        "Protección penal de sistemas, datos y redes informáticas",
+        "Sanción del acceso no autorizado a sistemas digitales",
+        "Base jurídica para la persecución del fraude electrónico y cibercrimen",
+        "Fortalecimiento de la seguridad jurídica en entornos digitales"
+      ],
+      "tool": "Código orgánico",
+      "institution": "Asamblea Nacional del Ecuador",
+      "legal_scope": "Derecho penal con incidencia en ciberseguridad y protección de la información digital",
+      "state": "Vigente (con reformas posteriores)",
+      "image": " ./images/2014.jpg",
+      "link": "https://biblioteca.defensoria.gob.ec/bitstream/37000/3817/15/COIP.%20%20C%c3%b3digo%20Org%c3%a1nico%20Integral%20Penal.%20S%c3%a9ptimo%20Suplemento.%20Actualizado.pdf"
+    },
+    {
+      "year": "2015",
+      "month": "Febrero",
+      "title": "Ley Orgánica de Telecomunicaciones",
+      "description": "La Ley Orgánica de Telecomunicaciones establece el marco legal para la regulación, control y gestión del espectro radioeléctrico, redes y servicios de telecomunicaciones en Ecuador. Esta ley es fundamental para el proceso de digitalización del país, ya que garantiza el desarrollo de infraestructura tecnológica, promueve el acceso universal a servicios de telecomunicaciones y fortalece el entorno para la expansión de Internet, conectividad móvil y servicios digitales.",
+      "impact": [
+        "Fortalece el marco regulatorio para servicios de telecomunicaciones e Internet",
+        "Promueve el acceso universal y equitativo a conectividad digital",
+        "Impulsa el desarrollo de infraestructura tecnológica a nivel nacional",
+        "Facilita la expansión de servicios móviles y de banda ancha",
+        "Base legal para el crecimiento de la economía digital y servicios en línea"
+      ],
+      "tool": "Ley orgánica",
+      "institution": "Asamblea Nacional del Ecuador",
+      "legal_scope": "Telecomunicaciones, conectividad e infraestructura digital",
+      "state": "Vigente (con reformas posteriores)",
+      "image": " ./images/2015.jpg",
+      "link": "https://www.telecomunicaciones.gob.ec/wp-content/uploads/downloads/2016/05/Ley-Org%C3%A1nica-de-Telecomunicaciones.pdf"
+    },
+    {
+      "year": "2018",
+      "month": "Febrero",
+      "title": "Ley Orgánica para la Optimización y Eficiencia de Trámites Administrativos",
+      "description": "Esta ley impulsa la simplificación de trámites en el sector público ecuatoriano y promueve el uso de medios electrónicos para la gestión administrativa. Aunque su enfoque principal es la eficiencia estatal, se convierte en un pilar de la transformación digital al establecer que los trámites puedan realizarse por canales digitales, reducir requisitos innecesarios y fomentar la interoperabilidad entre instituciones públicas.",
+      "impact": [
+        "Impulsa la digitalización de trámites en instituciones públicas",
+        "Reduce la burocracia mediante procesos administrativos simplificados",
+        "Fomenta el uso de plataformas electrónicas para servicios ciudadanos",
+        "Promueve la interoperabilidad entre entidades del Estado",
+        "Mejora la eficiencia y transparencia en la gestión pública digital"
+      ],
+      "tool": "Ley orgánica",
+      "institution": "Asamblea Nacional del Ecuador",
+      "legal_scope": "Gestión administrativa pública y digitalización de trámites",
+      "state": "Vigente",
+      "image": " ./images/2018.jpg",
+      "link": "https://www.gob.ec/sites/default/files/regulations/2018-02/Ley%20Org%C3%A1nica%20para%20la%20Optimizaci%C3%B3n%20y%20Eficiencia%20de%20Tr%C3%A1mites%20Administrativos.pdf"
+    },
+    {
+      "year": "2020",
+      "month": "Marzo",
+      "title": "Inicio de la pandemia COVID-19 y aceleración masiva de la digitalización",
+      "description": "La emergencia sanitaria y el confinamiento obligatorio en Ecuador impulsaron un cambio drástico en los hábitos digitales. El uso de internet, compras en línea y pagos electrónicos creció exponencialmente por la necesidad de evitar contacto físico. Este período marcó el mayor salto en penetración digital reciente.",
+      "impact": [
+        "Aumento explosivo en el uso de internet y servicios digitales por confinamiento",
+        "Crecimiento del e-commerce ~40% en 2020 vs 2019 (CECE)",
+        "Normalización de pagos sin contacto y banca digital",
+        "Catalizador para la adopción masiva de plataformas como DEUNA"
+      ],
+      "tool": "Contexto de emergencia sanitaria y medidas de distanciamiento",
+      "institution": "Gobierno Nacional / MSP / Sector privado",
+      "state": "Evento catalizador (no normativa)",
+      "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80",
+      "link": "https://datareportal.com/reports/digital-2021-ecuador"
+    },
+    {
+      "year": "2020",
+      "month": "2020",
+      "title": "Lanzamiento de DEUNA – Plataforma interoperable de pagos digitales",
+      "description": "Lanzada en 2020 (durante la pandemia) por Banco Pichincha, DEUNA se posicionó como billetera digital interoperable. Coincidió con el pico de adopción digital por confinamiento, facilitando pagos sin contacto, transferencias y reducción del efectivo.",
+      "impact": [
+        "Creación de la principal plataforma de pagos digitales del Ecuador",
+        "Impulso significativo a la inclusión financiera durante la pandemia",
+        "Base para la reducción del uso de efectivo en transacciones cotidianas",
+        "Crecimiento explosivo: de 0 a millones de usuarios en pocos años"
+      ],
+      "tool": "Plataforma fintech / Billetera digital",
+      "institution": "Banco Pichincha / Alianzas con cooperativas y BCE",
+      "state": "Lanzamiento comercial (2020)",
+      "image": "https://images.unsplash.com/photo-1563012839-5d5c46d4e0c5?auto=format&fit=crop&q=80",
+      "link": "https://www.forbes.com.ec/brandvoice/deuna-plataforma-integra-pagos-digitales-vida-diaria-millones-ecuatorianos-n85831"
+    },
+    {
+      "year": "2021",
+      "month": "Mayo",
+      "title": "Ley Orgánica de Protección de Datos Personales (LOPD)",
+      "description": "Garantiza el derecho constitucional a la protección de datos personales. Regula el tratamiento de datos personales en medios físicos y digitales, establece principios, derechos de los titulares, obligaciones para responsables y encargados del tratamiento, y crea la Autoridad de Protección de Datos.",
+      "impact": [
+        "Establece un marco legal integral para la protección de datos personales",
+        "Regula el tratamiento de datos en plataformas digitales y sistemas automatizados",
+        "Reconoce derechos como acceso, rectificación, cancelación y oposición",
+        "Obliga a empresas e instituciones públicas a implementar medidas de seguridad de la información",
+        "Alinea a Ecuador con estándares internacionales de privacidad"
+      ],
+      "tool": "Ley orgánica",
+      "institution": "Asamblea Nacional del Ecuador",
+      "legal_scope": "Protección de datos personales y privacidad en entornos físicos y digitales",
+      "state": "Vigente",
+      "image": " ./images/2021.jpg",
+      "link": "https://www.finanzaspopulares.gob.ec/wp-content/uploads/2021/07/ley_organica_de_proteccion_de_datos_personales.pdf"
+    },
+    {
+      "year": "2021–2023",
+      "month": "Post-pandemia",
+      "title": "Crecimiento explosivo de DEUNA y pagos digitales",
+      "description": "Tras el pico pandémico, DEUNA creció rápidamente. En 2023 alcanzó ~4 millones de usuarios. La pandemia normalizó pagos QR, transferencias y compras online. La penetración de internet subió de ~70% (2020) a ~81% (2023).",
+      "impact": [
+        "Crecimiento de usuarios DEUNA de cientos de miles a 4 millones (2023)",
+        "Aumento del e-commerce y pagos móviles por encima del promedio regional",
+        "Reducción estructural del uso de efectivo en comercios y servicios",
+        "Mayor inclusión financiera en sectores jóvenes y no bancarizados"
+      ],
+      "tool": "Ecosistema de pagos digitales",
+      "institution": "DEUNA / Sector financiero privado",
+      "state": "Expansión y consolidación",
+      "image": "https://images.unsplash.com/photo-1556740714-a8395b3a74dd?auto=format&fit=crop&q=80",
+      "link": "https://www.eluniverso.com/noticias/economia/deuna-aplicacion-de-pagos-digitales-llego-a-13-millones-de-usuarios-en-ecuador-y-su-meta-es-completar-5-millones-en-4-anos-nota"
+    },
+    {
+      "year": "2022",
+      "month": "Diciembre",
+      "title": "Política Pública de Transformación Digital del Ecuador",
+      "description": "Instrumento de política pública que establece lineamientos estratégicos para la transformación digital del Estado ecuatoriano, la mejora de servicios digitales, la interoperabilidad institucional y el desarrollo de la economía digital.",
+      "impact": [
+        "Define la hoja de ruta nacional para la transformación digital",
+        "Impulsa la digitalización de servicios públicos",
+        "Fomenta la interoperabilidad entre instituciones del Estado",
+        "Promueve la inclusión digital y el desarrollo de habilidades tecnológicas",
+        "Fortalece el ecosistema de gobierno digital"
+      ],
+      "tool": "Política pública",
+      "institution": "Ministerio de Telecomunicaciones y de la Sociedad de la Información (MINTEL)",
+      "legal_scope": "Transformación digital del Estado y servicios públicos digitales",
+      "state": "Vigente",
+      "image": " ./images/2022.jpg",
+      "link": "https://www.gobiernoelectronico.gob.ec/wp-content/uploads/2025/03/INSTRUMENTO-Politica-Publica-para-la-Transformacion-Digital-Ecuador-2025-2030-MINTEL-signed_f.pdf"
+    },
+    {
+      "year": "2023",
+      "month": "Febrero",
+      "title": "Ley Orgánica para la Transformación Digital y Audiovisual",
+      "description": "Establece el marco legal para impulsar la transformación digital en Ecuador, promoviendo la digitalización de trámites, interoperabilidad, identidad digital, servicios en línea, capacitación en competencias digitales y modernización del entorno regulatorio para la economía digital.",
+      "impact": [
+        "Impulsa la digitalización de trámites y servicios públicos",
+        "Promueve la identidad digital y la interoperabilidad estatal",
+        "Fomenta el desarrollo de habilidades digitales en la población",
+        "Moderniza el marco regulatorio para la economía digital",
+        "Fortalece el ecosistema digital nacional"
+      ],
+      "tool": "Ley orgánica",
+      "institution": "Asamblea Nacional del Ecuador",
+      "legal_scope": "Transformación digital, servicios electrónicos y economía digital",
+      "state": "Vigente",
+      "image": " ./images/2023.jpg",
+      "link": "https://www.gob.ec/sites/default/files/regulations/2025-05/Ley%20Org%C3%A1nica%20para%20la%20Transformaci%C3%B3n%20Digital%20y%20Audiovisual.pdf"
+    },
+    {
+      "year": "2023",
+      "month": "Julio",
+      "title": "Reglamento General a la Ley de Transformación Digital y Audiovisual",
+      "description": "Reglamento que desarrolla y operacionaliza la Ley de Transformación Digital, estableciendo obligaciones para entidades públicas respecto a planes de transformación digital, uso de plataformas electrónicas e interoperabilidad.",
+      "impact": [
+        "Define lineamientos técnicos para la implementación de la ley",
+        "Obliga a entidades públicas a planificar su transformación digital",
+        "Refuerza la interoperabilidad entre sistemas estatales",
+        "Promueve el uso de plataformas digitales oficiales"
+      ],
+      "tool": "Reglamento",
+      "institution": "Presidencia de la República del Ecuador",
+      "legal_scope": "Implementación de la transformación digital en el sector público",
+      "state": "Vigente",
+      "image": " ./images/2023.jpg",
+      "link": "https://www.firmadigital.gob.ec/wp-content/uploads/2023/07/reglamento-general-a-la-ley-organica-para-la-trasformacion-digital-y-audiovisual.pdf"
+    },
+    {
+      "year": "2024",
+      "month": "Octubre",
+      "title": "Ley de Innovación y Tecnología Financiera (Fintech)",
+      "description": "Marco regulatorio para empresas que ofrecen servicios financieros tecnológicos, incluyendo pagos digitales, billeteras electrónicas, financiamiento colaborativo y otros servicios fintech, promoviendo innovación y seguridad en el sistema financiero digital.",
+      "impact": [
+        "Regula servicios financieros digitales y plataformas fintech",
+        "Promueve la innovación tecnológica en el sistema financiero",
+        "Fortalece la seguridad en transacciones electrónicas",
+        "Impulsa la inclusión financiera digital"
+      ],
+      "tool": "Ley orgánica",
+      "institution": "Asamblea Nacional del Ecuador",
+      "legal_scope": "Servicios financieros tecnológicos y economía digital",
+      "state": "Vigente",
+      "image": " ./images/2024.jpg",
+      "link": "https://www.trade.gov/country-commercial-guides/ecuador-digital-economy"
+    },
+    {
+      "year": "2024",
+      "month": "2024",
+      "title": "DEUNA alcanza ~5 millones de usuarios y madurez en pagos",
+      "description": "En 2024, DEUNA consolidó su posición con ~5 millones de usuarios y ~380.000 comercios afiliados. La penetración de internet llegó a ~83.6%. Funcionalidades como pagos offline y alianzas ampliaron su alcance.",
+      "impact": [
+        "~5 millones de usuarios activos en DEUNA",
+        "Red de aceptación ~380.000 comercios",
+        "Fortalecimiento de la inclusión financiera y reducción del efectivo",
+        "Ecuador destaca en adopción fintech regional"
+      ],
+      "tool": "Billetera digital interoperable",
+      "institution": "DEUNA / Banco Pichincha y aliados",
+      "state": "Madurez y liderazgo de mercado",
+      "image": "https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?auto=format&fit=crop&q=80",
+      "link": "https://www.forbes.com.ec/innovacion/los-planes-deuna-voz-su-ceo-n57024"
+    },
+    {
+      "year": "2025",
+      "month": "Abril",
+      "title": "Política Pública para la Transformación Digital 2025–2030",
+      "description": "Actualiza y amplía la estrategia nacional de transformación digital, estableciendo metas para infraestructura digital, servicios públicos electrónicos, innovación tecnológica e inclusión digital para el período 2025–2030.",
+      "impact": [
+        "Define metas nacionales de digitalización a mediano plazo",
+        "Impulsa infraestructura y conectividad digital",
+        "Fortalece la competitividad digital del país",
+        "Promueve inclusión y alfabetización digital"
+      ],
+      "tool": "Política pública",
+      "institution": "Ministerio de Telecomunicaciones y de la Sociedad de la Información (MINTEL)",
+      "legal_scope": "Planificación estratégica de la transformación digital nacional",
+      "state": "Vigente",
+      "image": " ./images/2025.jpg",
+      "link": "https://kruger.law/transformacion-digital-ecuador-2030/"
+    },
+    {
+      "year": "2025",
+      "month": "Julio",
+      "title": "Iniciativas legislativas sobre tecnologías emergentes",
+      "description": "Debates y propuestas normativas orientadas a regular el uso ético y responsable de tecnologías emergentes como inteligencia artificial, blockchain y automatización avanzada en Ecuador.",
+      "impact": [
+        "Inicio del debate regulatorio sobre inteligencia artificial",
+        "Promoción del uso ético de tecnologías emergentes",
+        "Base para futuras leyes sobre innovación tecnológica",
+        "Fortalecimiento del marco legal frente a nuevos riesgos digitales"
+      ],
+      "tool": "Iniciativas legislativas",
+      "institution": "Asamblea Nacional del Ecuador",
+      "legal_scope": "Tecnologías emergentes y regulación digital futura",
+      "state": "En estudio",
+      "image": " ./images/2025.jpg",
+      "link": "Se revisan nuevas leyes para regular blockchain, inteligencia artificial y otros usos tecnológicos responsables."
+    },
+    {
+      "year": "2025",
+      "month": "2025",
+      "title": "DEUNA consolida liderazgo: ~6 millones de usuarios y ecosistema masivo",
+      "description": "En 2025, DEUNA alcanzó cerca de 6 millones de usuarios (+80% vs 2024) y superó los 470.000 comercios afiliados. La penetración de internet se estabilizó en ~83-84%. Pagos digitales son ya predominantes en la economía diaria.",
+      "impact": [
+        "~6 millones de usuarios activos",
+        "Más de 470.000 comercios afiliados",
+        "Transacciones digitales multiplicadas por 5 en algunos segmentos",
+        "Transformación hacia una economía menos dependiente del efectivo"
+      ],
+      "tool": "Ecosistema de pagos digitales y billetera líder",
+      "institution": "DEUNA / Banco Pichincha y aliados",
+      "state": "Liderazgo consolidado",
+      "image": "https://images.unsplash.com/photo-1556742031-c6961e8560b0?auto=format&fit=crop&q=80",
+      "link": "https://www.forbes.com.ec/brandvoice/deuna-plataforma-integra-pagos-digitales-vida-diaria-millones-ecuatorianos-n85831"
+    },
+    {
+      "year": "2026",
+      "month": "Actual (2026)",
+      "title": "Dashboard Interactivo: Digitalización Ecuador vs China, Chile y Colombia – Evolución y Diagnóstico 2026",
+      "description": "Dashboard visual interactivo que compara el nivel de digitalización de Ecuador con líderes globales (China) y regionales (Chile y Colombia). Integra evolución histórica desde 2019–2026, impacto post-pandemia, rol clave de DEUNA en inclusión financiera, métricas actualizadas (Huawei GDII 2025, ONU EGDI 2024, CECE 2024, DataReportal), brechas críticas, políticas habilitadoras y diagnóstico final con porcentaje ponderado de madurez digital (Ecuador ≈52%). Incluye gráficos comparativos (radar, barras, líneas), tarjetas de países y recomendaciones estratégicas para cerrar brechas en uso productivo, 5G, IA y economía digital.",
+      "impact": [
+        "Comparación clara y visual entre Ecuador y referentes: China (escala masiva), Chile (calidad institucional), Colombia (dinamismo fintech)",
+        "Resumen cronológico de la transformación digital ecuatoriana: salto reactivo post-2020 y consolidación vía DEUNA",
+        "Integración del Estudio CECE/UEES VII Medición 2024: e-commerce 13% retail, monto US$4.618M, crecimiento +206% 2018–2023",
+        "Diagnóstico final cuantitativo: Ecuador en nivel intermedio (~52%) – fuerte acceso (84% internet), pero rezago en profundidad y productividad",
+        "Herramienta estratégica para entender brechas (rural, velocidad 45.54 Mbps, 5G inicial) y priorizar políticas (sandbox fintech, metas IA, despliegue 5G rural)",
+        "Base interactiva para seguimiento, toma de decisiones y proyecciones de madurez digital hacia 2030"
+      ],
+      "tool": "Dashboard web interactivo (HTML + JSON estructurado + Chart.js para gráficos radar, barras y líneas)",
+      "institution": "Elaboración propia con fuentes oficiales y académicas (Huawei GDII 2025, ONU EGDI 2024, CECE/UEES VII Medición 2024, DataReportal 2024–2025, BCE, DEUNA, MINTEL, Ericsson Mobility Report, GSMA)",
+      "state": "Completo y disponible (versión 2026)",
+      "image": "./images/2025.jpg",
+      "link": "./dashboard.html"
+    }
+  ]
+}

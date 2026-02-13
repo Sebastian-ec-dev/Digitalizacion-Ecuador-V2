@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Resumen - Línea de Tiempo</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#004a99",
+                        "background-dark": "#020617",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        display: ["Playfair Display", "serif"],
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style type="text/tailwindcss">
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .glass-panel{
+            background: rgba(2, 6, 23, 0.55);
+            backdrop-filter: blur(28px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+        }
+
+        .year-shadow { text-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+
+        #bg-image{
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.55) contrast(1.1) grayscale(0.6);
+            transition: opacity .8s ease;
+            z-index: -2;
+            opacity: 0;
+        }
+        #bg-image.visible{ opacity: 1; }
+    </style>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-sans overflow-x-hidden">
+<img id="bg-image" src="" alt="Background"/>
+
+<div class="fixed inset-0 z-[-1] pointer-events-none">
+    <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent/30 to-background-dark/60"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-background-dark/80 via-transparent/30 to-transparent"></div>
+</div>
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-background-dark/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary">summarize</span>
+            <span class="font-semibold tracking-wide">Resumen</span>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <a id="btn-impact"
+               href="estado-digital.html"
+               class="glass-panel hover:bg-white/10 text-white font-semibold py-2.5 px-4 rounded-lg transition-all flex items-center gap-2 text-sm shadow-lg shadow-primary/20">
+                <span class="material-symbols-outlined text-[20px] text-primary">insights</span>
+                ¿Qué tan digitalizado está Ecuador?
+            </a>
+
+            <a id="btn-back"
+               href="index.html"
+               class="bg-primary hover:bg-primary/85 text-white font-semibold py-2.5 px-4 rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-primary/30 text-sm">
+                <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                Volver
+            </a>
+        </div>
+
+    </div>
+</header>
+
+<main class="relative pt-28 pb-16">
+    <div class="w-full max-w-7xl mx-auto px-6 md:px-12 space-y-10">
+
+        <!-- HERO -->
+        <section class="glass-panel rounded-2xl p-8 md:p-12 lg:p-14 relative overflow-hidden">
+            <div class="absolute -top-20 -left-20 w-40 h-40 bg-primary/10 blur-[80px] rounded-full"></div>
+
+            <div class="relative z-10 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                    <div>
+                        <h1 class="text-4xl md:text-6xl font-display font-bold text-white leading-tight year-shadow">
+                            Resumen ejecutivo
+                        </h1>
+                        <p class="mt-3 text-slate-300 font-light max-w-2xl">
+                            Construido automáticamente desde <span class="text-slate-200 font-semibold">data.json</span>.
+                            Filtra, revisa categorías y encuentra instituciones clave.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span id="badge-range" class="px-3 py-1 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-slate-200">—</span>
+                        <span id="badge-total" class="px-3 py-1 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-slate-200">—</span>
+                    </div>
+                </div>
+
+                <!-- KPIs -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
+                    <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                        <p class="text-xs uppercase tracking-wider text-slate-400">Hitos</p>
+                        <p id="kpi-hitos" class="mt-1 text-2xl font-bold text-white">—</p>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                        <p class="text-xs uppercase tracking-wider text-slate-400">Instituciones únicas</p>
+                        <p id="kpi-inst" class="mt-1 text-2xl font-bold text-white">—</p>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                        <p class="text-xs uppercase tracking-wider text-slate-400">Herramientas / Productos</p>
+                        <p id="kpi-tools" class="mt-1 text-2xl font-bold text-white">—</p>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                        <p class="text-xs uppercase tracking-wider text-slate-400">Con fuentes</p>
+                        <p id="kpi-sources" class="mt-1 text-2xl font-bold text-white">—</p>
+                    </div>
+                </div>
+
+                <!-- Chips -->
+                <div class="pt-2">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="material-symbols-outlined text-primary">category</span>
+                        <h2 class="text-sm font-bold tracking-wide text-white uppercase">Categorías (tool)</h2>
+                    </div>
+                    <div id="chips" class="flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRID -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="glass-panel rounded-2xl p-7 md:p-9">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">format_list_bulleted</span>
+                            <h2 class="text-sm font-bold tracking-wide text-white uppercase">Resumen por categoría</h2>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-slate-300 text-[20px]">search</span>
+                            <input id="search"
+                                   type="text"
+                                   placeholder="Buscar (firma, pichincha, cédula...)"
+                                   class="w-full md:w-80 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/60"/>
+                        </div>
+                    </div>
+
+                    <div id="by-category" class="mt-6 space-y-5"></div>
+
+                    <div id="empty" class="hidden mt-8 text-center text-slate-400">
+                        No hay resultados con ese filtro.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right -->
+            <aside class="space-y-6">
+                <div class="glass-panel rounded-2xl p-7 md:p-9">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="material-symbols-outlined text-primary">apartment</span>
+                        <h2 class="text-sm font-bold tracking-wide text-white uppercase">Top instituciones</h2>
+                    </div>
+                    <div id="top-institutions" class="space-y-3"></div>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-7 md:p-9">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="material-symbols-outlined text-primary">timeline</span>
+                        <h2 class="text-sm font-bold tracking-wide text-white uppercase">Distribución por año</h2>
+                    </div>
+                    <div id="year-distribution" class="space-y-3"></div>
+                </div>
+            </aside>
+        </section>
+
+        <footer class="text-center text-xs text-slate-500">
+            Resumen generado desde data.json • Estilo glass/dark consistente
+        </footer>
+    </div>
+</main>
+
+<script>
+    // ========= helpers =========
+    function escapeHtml(str = "") {
+        return String(str)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
+
+    function norm(s) { return String(s || "").trim(); }
+
+    function getSourcesCount(item) {
+        let n = 0;
+        if (item?.link) n += 1;
+        if (Array.isArray(item?.sources)) n += item.sources.length;
+        return n;
+    }
+
+    function pickBgImage(timeline) {
+        const withImg = timeline.filter(x => norm(x?.image));
+        if (!withImg.length) return "";
+        // usa la última como "más reciente" visualmente
+        return withImg[withImg.length - 1].image;
+    }
+
+    function uniqCount(arr) {
+        return new Set(arr.filter(Boolean)).size;
+    }
+
+    function groupBy(arr, keyFn) {
+        const map = new Map();
+        for (const it of arr) {
+            const k = keyFn(it);
+            const key = norm(k) || "Otros";
+            if (!map.has(key)) map.set(key, []);
+            map.get(key).push(it);
+        }
+        return map;
+    }
+
+    function countBy(arr, keyFn) {
+        const m = new Map();
+        for (const it of arr) {
+            const k = norm(keyFn(it));
+            if (!k) continue;
+            m.set(k, (m.get(k) || 0) + 1);
+        }
+        return m;
+    }
+
+    // ========= state =========
+    let timelineData = [];
+    let activeTool = "Todas"; // chip seleccionada
+    let query = "";
+
+    // ========= render =========
+    function setBackgroundFromData() {
+        const bg = document.getElementById("bg-image");
+        const src = pickBgImage(timelineData);
+        if (!src) return;
+        bg.classList.remove("visible");
+        setTimeout(() => {
+            bg.src = src;
+            bg.onload = () => bg.classList.add("visible");
+        }, 120);
+    }
+
+    function renderKPIs(data) {
+        const years = data.map(x => Number(x.year)).filter(n => !Number.isNaN(n));
+        const minYear = years.length ? Math.min(...years) : "—";
+        const maxYear = years.length ? Math.max(...years) : "—";
+
+        const institutions = data.map(x => norm(x.institution)).filter(Boolean);
+        const tools = data.map(x => norm(x.tool)).filter(Boolean);
+
+        const withSources = data.filter(x => getSourcesCount(x) > 0).length;
+
+        document.getElementById("kpi-hitos").textContent = data.length;
+        document.getElementById("kpi-inst").textContent = uniqCount(institutions);
+        document.getElementById("kpi-tools").textContent = uniqCount(tools);
+        document.getElementById("kpi-sources").textContent = withSources;
+
+        document.getElementById("badge-range").textContent = `Rango: ${minYear} — ${maxYear}`;
+        document.getElementById("badge-total").textContent = `${data.length} hitos`;
+    }
+
+    function getFilteredData() {
+        const q = query.toLowerCase();
+
+        return timelineData.filter(item => {
+            // chip por tool
+            const tool = norm(item.tool) || "Otros";
+            if (activeTool !== "Todas" && tool !== activeTool) return false;
+
+            // búsqueda full-text básica
+            if (!q) return true;
+            const hay = [
+                item.year, item.month, item.title, item.description,
+                item.tool, item.institution, item.legal_scope, item.state
+            ].map(x => norm(x).toLowerCase()).join(" | ");
+            return hay.includes(q);
+        });
+    }
+
+    function renderChips() {
+        const chipsEl = document.getElementById("chips");
+        const toolCounts = countBy(timelineData, x => norm(x.tool) || "Otros");
+
+        // ordenar por frecuencia desc
+        const toolsSorted = Array.from(toolCounts.entries())
+            .sort((a, b) => b[1] - a[1])
+            .map(([name, count]) => ({ name, count }));
+
+        const allCount = timelineData.length;
+
+        const chips = [
+            { name: "Todas", count: allCount },
+            ...toolsSorted
+        ];
+
+        chipsEl.innerHTML = chips.map(c => {
+            const active = c.name === activeTool;
+            return `
+        <button
+          data-tool="${escapeHtml(c.name)}"
+          class="px-3 py-2 rounded-xl border text-sm font-semibold transition-all
+                 ${active ? "border-primary bg-primary/15 text-white" : "border-white/10 bg-white/5 text-slate-200 hover:bg-white/10"}">
+          ${escapeHtml(c.name)}
+          <span class="ml-2 text-xs text-slate-300/80">(${c.count})</span>
+        </button>
+      `;
+        }).join("");
+
+        chipsEl.querySelectorAll("button").forEach(btn => {
+            btn.addEventListener("click", () => {
+                activeTool = btn.dataset.tool;
+                renderAll();
+            });
+        });
+    }
+
+    function renderByCategory(data) {
+        const container = document.getElementById("by-category");
+        const empty = document.getElementById("empty");
+
+        const grouped = groupBy(data, x => norm(x.tool) || "Otros");
+
+        // ordenar grupos por cantidad desc
+        const groupsSorted = Array.from(grouped.entries())
+            .map(([name, items]) => ({ name, items }))
+            .sort((a, b) => b.items.length - a.items.length);
+
+        if (!data.length) {
+            container.innerHTML = "";
+            empty.classList.remove("hidden");
+            return;
+        }
+        empty.classList.add("hidden");
+
+        container.innerHTML = groupsSorted.map(g => {
+            // ordenar items por year asc (si se puede)
+            const itemsSorted = [...g.items].sort((a, b) => Number(a.year) - Number(b.year));
+
+            return `
+        <div class="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+          <div class="px-5 py-4 flex items-center justify-between gap-4 border-b border-white/10">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary">label</span>
+              <h3 class="text-sm font-bold tracking-wide text-white uppercase">${escapeHtml(g.name)}</h3>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-slate-200">
+              ${g.items.length} hitos
+            </span>
+          </div>
+
+          <div class="p-5 space-y-3">
+            ${itemsSorted.map(item => {
+                const year = escapeHtml(item.year ?? "");
+                const title = escapeHtml(item.title ?? "");
+                const inst = norm(item.institution) ? escapeHtml(item.institution) : "";
+                const month = norm(item.month) ? escapeHtml(item.month) : "";
+                const desc = norm(item.description) ? escapeHtml(item.description).replaceAll("\n","<br/>") : "";
+                const sourcesCount = getSourcesCount(item);
+
+                const sourcesBadge = sourcesCount
+                    ? `<span class="px-2 py-1 rounded-full text-[11px] font-semibold border border-white/10 bg-white/5 text-slate-200">${sourcesCount} fuente(s)</span>`
+                    : `<span class="px-2 py-1 rounded-full text-[11px] font-semibold border border-white/10 bg-white/5 text-slate-400">sin fuentes</span>`;
+
+                return `
+                <div class="rounded-xl border border-white/10 bg-black/10 p-4">
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <div class="flex flex-wrap items-center gap-2">
+                        <span class="text-lg font-bold text-white">${year}</span>
+                        ${month ? `<span class="text-xs tracking-[0.25em] font-bold text-slate-400 uppercase">${month}</span>` : ""}
+                        ${inst ? `<span class="px-2 py-1 rounded-full text-[11px] font-semibold border border-white/10 bg-white/5 text-slate-200">${inst}</span>` : ""}
+                      </div>
+                      ${title ? `<div class="mt-2 text-base font-semibold text-white">${title}</div>` : ""}
+                      ${desc ? `<div class="mt-2 text-sm text-slate-300 font-light leading-relaxed">${desc}</div>` : ""}
+                    </div>
+
+                    <div class="flex flex-col items-end gap-2">
+                      ${sourcesBadge}
+                      ${norm(item.state) ? `<span class="px-2 py-1 rounded-full text-[11px] font-semibold border border-white/10 bg-white/5 text-slate-300">${escapeHtml(item.state)}</span>` : ""}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `;
+        }).join("");
+    }
+
+    function renderTopInstitutions() {
+        const el = document.getElementById("top-institutions");
+        const counts = countBy(timelineData, x => x.institution);
+
+        const top = Array.from(counts.entries())
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 8);
+
+        if (!top.length) {
+            el.innerHTML = `<p class="text-sm text-slate-400">No hay instituciones en el JSON.</p>`;
+            return;
+        }
+
+        el.innerHTML = top.map(([name, count]) => {
+            const pct = Math.round((count / timelineData.length) * 100);
+            return `
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <div class="flex items-center justify-between gap-3">
+            <div class="text-sm text-slate-200 font-semibold">${escapeHtml(name)}</div>
+            <div class="text-xs text-slate-300">${count} (${pct}%)</div>
+          </div>
+          <div class="mt-2 h-2 rounded-full bg-white/10 overflow-hidden">
+            <div class="h-full bg-primary/70" style="width:${pct}%"></div>
+          </div>
+        </div>
+      `;
+        }).join("");
+    }
+
+    function renderYearDistribution() {
+        const el = document.getElementById("year-distribution");
+
+        const counts = countBy(timelineData, x => String(x.year));
+        const yearsSorted = Array.from(counts.entries())
+            .sort((a, b) => Number(a[0]) - Number(b[0]));
+
+        if (!yearsSorted.length) {
+            el.innerHTML = `<p class="text-sm text-slate-400">No hay años en el JSON.</p>`;
+            return;
+        }
+
+        const max = Math.max(...yearsSorted.map(([, c]) => c));
+
+        el.innerHTML = yearsSorted.map(([year, count]) => {
+            const pct = Math.max(6, Math.round((count / max) * 100)); // mínimo visible
+            return `
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <div class="flex items-center justify-between gap-3">
+            <div class="text-sm text-slate-200 font-semibold">${escapeHtml(year)}</div>
+            <div class="text-xs text-slate-300">${count}</div>
+          </div>
+          <div class="mt-2 h-2 rounded-full bg-white/10 overflow-hidden">
+            <div class="h-full bg-primary/70" style="width:${pct}%"></div>
+          </div>
+        </div>
+      `;
+        }).join("");
+    }
+
+    function renderAll() {
+        renderKPIs(timelineData);
+        renderChips();
+
+        const filtered = getFilteredData();
+        renderByCategory(filtered);
+
+        renderTopInstitutions();
+        renderYearDistribution();
+    }
+
+    // ========= init =========
+    async function loadSummary() {
+        try {
+            const res = await fetch("data.json");
+            const data = await res.json();
+
+            timelineData = Array.isArray(data?.timeline) ? data.timeline : [];
+            if (!timelineData.length) {
+                document.getElementById("by-category").innerHTML =
+                    `<p class="text-slate-400">No se encontró <code class="text-slate-200">timeline</code> en data.json o está vacío.</p>`;
+                return;
+            }
+
+            setBackgroundFromData();
+
+            // search
+            const search = document.getElementById("search");
+            search.addEventListener("input", (e) => {
+                query = e.target.value || "";
+                renderAll();
+            });
+
+            renderAll();
+        } catch (err) {
+            console.error(err);
+            document.getElementById("by-category").innerHTML =
+                `<p class="text-red-400">Error al cargar data.json</p>`;
+        }
+    }
+
+    loadSummary();
+</script>
+</body>
+</html>

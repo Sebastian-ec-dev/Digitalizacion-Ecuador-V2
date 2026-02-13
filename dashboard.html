@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Digitalización 2025–2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --dark: #0f172a;
+      --muted: #64748b;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 12px 30px rgba(0, 0, 0, .08);
+      --radius: 16px;
+      --success: #22c55e;
+      --warning: #facc15;
+      --danger: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 270px;
+      background: #020617;
+      color: #fff;
+      position: fixed;
+      inset: 0 auto 0 0;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .sidebar-header {
+      padding: 1.8rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .sidebar-header h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #60a5fa, #a5b4fc);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .sidebar-nav button {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: none;
+      border: none;
+      color: #cbd5f5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: .95rem;
+      transition: .25s;
+      text-align: left;
+    }
+
+    .sidebar-nav button:hover {
+      background: rgba(255, 255, 255, .08);
+      color: #fff;
+    }
+
+    .sidebar-nav button.active {
+      background: rgba(37, 99, 235, .25);
+      border-left: 4px solid var(--primary);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* MAIN */
+    main {
+      margin-left: 270px;
+      flex: 1;
+      padding: 2.6rem 3rem;
+    }
+
+    header {
+      margin-bottom: 2.8rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #1e3a8a, #2563eb);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    header p {
+      margin-top: .7rem;
+      max-width: 900px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* SECTION */
+    .section {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 2.6rem;
+      box-shadow: var(--shadow);
+      animation: fade .4s ease;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(16px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .intro {
+      color: var(--muted);
+      max-width: 900px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      transition: .3s;
+      margin-top: 15px;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .definition {
+      border-left: 5px solid var(--primary);
+      background: #f8fafc;
+    }
+
+    .kpi-value {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-top: .4rem;
+    }
+
+    /* TABLE */
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 1.8rem;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .95rem;
+    }
+
+    thead th {
+      background: #2563eb;
+      color: #fff;
+      padding: 14px;
+      text-align: center;
+    }
+
+    tbody td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    /* BADGES */
+    .badge {
+      display: inline-block;
+      padding: .4rem .7rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .85rem;
+    }
+
+    .success {
+      background: #dcfce7;
+      color: #166534
+    }
+
+    .warning {
+      background: #fef9c3;
+      color: #854d0e
+    }
+
+    .danger {
+      background: #fee2e2;
+      color: #7f1d1d
+    }
+
+    /* CHART */
+    .chart-box {
+      margin-top: 2.4rem;
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.6rem;
+      box-shadow: var(--shadow);
+      height: 460px;
+    }
+
+    /* MOBILE */
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 1.3rem;
+      z-index: 1100;
+    }
+
+    .final-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(243, 244, 255, 0.8));
+      border-radius: 2rem;
+      overflow: hidden;
+    }
+
+    .final-card:hover {
+      transform: translateY(-8px) scale(1.015);
+      transition: all 0.4s ease;
+    }
+
+    @media(max-width:992px) {
+      .sidebar {
+        transform: translateX(-100%)
+      }
+
+      .sidebar.active {
+        transform: none
+      }
+
+      main {
+        margin-left: 0;
+        padding: 2rem 1.5rem
+      }
+
+      .hamburger {
+        display: block
+      }
+
+      .text-content h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 2rem 0 1rem;
+        color: var(--dark);
+        position: relative;
+      }
+
+      .text-content h3::before {
+        content: "";
+        position: absolute;
+        left: -1.5rem;
+        top: 0.3rem;
+        width: 6px;
+        height: 1.8rem;
+        background: var(--primary);
+        border-radius: 3px;
+      }
+
+      .text-content p {
+        margin-bottom: 1.25rem;
+        color: #1e293b;
+      }
+
+      .text-content .note {
+        font-style: italic;
+        color: #64748b;
+        font-size: 0.95rem;
+        margin: 0.75rem 0 1.5rem;
+        padding-left: 1rem;
+        border-left: 4px solid #cbd5e1;
+      }
+
+      .kpi-value {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .card .label-with-icon {
+        display: flex;
+        align-items: center;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .card .kpi-value {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.75rem;
+      }
+
+      .card .description {
+        font-size: 0.95rem;
+        color: #475569;
+        line-height: 1.5;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="hamburger" id="toggleBtn"><i class="fas fa-bars"></i></button>
+
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2 id="sidebarTitle">Cargando…</h2>
+    </div>
+    <div class="sidebar-nav" id="sidebarNav"></div>
+  </nav>
+
+  <main>
+    <header>
+      <h1 id="pageTitle"></h1>
+      <p id="pageSubtitle"></p>
+    </header>
+    <div id="contentArea"></div>
+  </main>
+
+  <script>
+    let appData;
+    let chartInstance;
+
+    async function initDashboard() {
+      const res = await fetch('data-digitalizacion.json');
+      appData = await res.json();
+
+      pageTitle.textContent = appData.title;
+      pageSubtitle.textContent = appData.subtitle;
+      sidebarTitle.textContent = appData.sidebar.header;
+
+      sidebarNav.innerHTML = '';
+      appData.sidebar.items.forEach(item => {
+        const btn = document.createElement('button');
+        btn.innerHTML = `<i class="${item.icon}"></i>${item.label}`;
+        btn.onclick = () => {
+          document.querySelectorAll('.sidebar-nav button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderSection(item.id);
+          if (innerWidth < 993) sidebar.classList.remove('active');
+        };
+        sidebarNav.appendChild(btn);
+      });
+
+      sidebarNav.querySelector('button').click();
+    }
+
+    function renderSection(id) {
+      const s = appData.sections[id];
+      let html = `<div class="section"><h2>${s.title}</h2>`;
+
+      if (s.intro) html += `<p class="intro">${s.intro}</p>`;
+
+      if (s.type === 'definitions') {
+        html += `<div class="grid">`;
+        s.items.forEach(d => {
+          html += `
+        <div class="card definition">
+          <h3 style="margin-bottom:10px">${d.term}</h3>
+          <p>${d.description}</p>
+        </div>`;
+        });
+        html += `</div>`;
+      }
+
+      if (s.type === 'text') {
+        html += `<p style="font-size:1.05rem;line-height:1.8">${s.content}</p>`;
+      }
+
+
+
+      if (s.type === 'table') {
+        html += `<div class="table-wrap"><table><thead><tr>`;
+        s.headers.forEach(h => html += `<th>${h}</th>`);
+        html += `</tr></thead><tbody>`;
+        s.rows.forEach(r => {
+          html += `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`;
+        });
+        html += `</tbody></table></div>`;
+      }
+
+      if (s.type === 'kpis') {
+        html += `<div class="grid">`;
+        s.items.forEach(k => {
+          html += `
+        <div class="card">
+          <h3 style="margin-bottom:10px">${k.label}</h3>
+          <div class="kpi-value">${k.value}</div>
+          <p>${k.description}</p>
+        </div>`;
+        });
+        html += `</div>`;
+      }
+
+      if (s.type === 'chart') {
+        html += `<div class="chart-box"><canvas id="chart"></canvas></div>`;
+      }
+
+      if (s.type === 'conclusion') {
+        html += `<p style="font-size:1.1rem;text-align:center;margin-bottom:2rem">${s.summary}</p>`;
+        html += `<div class="grid">`;
+        s.semaforo.forEach(i => {
+          html += `
+        <div class="card">
+          <h3>${i.dimension}</h3>
+          <span class="badge ${i.color}">${i.nivel}</span>
+        </div>`;
+        });
+        html += `</div>`;
+      }
+
+      if (s.key_message) {
+        html += `
+      <div style="margin-top:2.5rem;padding:1.4rem 1.8rem;
+      background:#eef2ff;border-left:6px solid var(--primary);
+      border-radius:12px">
+      <strong>Mensaje clave:</strong> ${s.key_message}
+      </div>`;
+      }
+
+      if (s.blocks && Array.isArray(s.blocks)) {
+        s.blocks.forEach(block => {
+
+          /* TABLA */
+          if (block.type === 'table') {
+            html += `<div class="table-wrap"><table><thead><tr>`;
+            block.headers.forEach(h => html += `<th>${h}</th>`);
+            html += `</tr></thead><tbody>`;
+            block.rows.forEach(r => {
+              html += `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`;
+            });
+            html += `</tbody></table></div>`;
+          }
+
+          /* GRÁFICO */
+          if (block.type === 'chart') {
+            html += `
+        <div class="chart-box">
+          <h3 style="margin-bottom:1rem">${block.title}</h3>
+          <canvas class="chart-canvas"></canvas>
+          <p style="margin-top:.8rem;color:var(--muted);font-size:.9rem">${block.note || ''}</p>
+        </div>`;
+          }
+
+          /* TEXTO ENRIQUECIDO (nuevo) */
+          if (block.type === 'text') {
+            html += `
+      <div style="margin-top:1rem;" class="text-content prose prose-slate max-w-prose mb-6" style="font-size:1.05rem;line-height:1.8">
+        ${block.content}
+      </div>`;
+          }
+
+          // CARDS KPI (para bloques 'kpis' individuales dentro de blocks)
+          if (block.type === 'kpis') {
+            html += `<div class="grid gap-6">`;
+            block.items.forEach(k => {
+              html += `
+        <div  class="mt-5  card p-6 shadow-md rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+          <div style="margin-bottom:10px" class="flex items-center gap-3 mb-10">
+            ${k.icon ? `<i class="${k.icon} text-2xl text-primary"></i>` : ''}
+            <h3 class="text-xl font-semibold text-gray-800">${k.label}</h3>
+          </div>
+          <div class="text-3xl font-bold text-primary mb-2">${k.value}</div>
+          <p class="text-gray-600">${k.description}</p>
+        </div>`;
+            });
+            html += `</div>`;
+          }
+
+
+          if (block.type === 'card') {
+            html += `
+    <div style="
+      margin: 4rem auto;
+      max-width: 800px;
+      padding: 2.5rem 2rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f5ff 100%);
+      border: 3px solid #003087;
+      border-radius: 1.5rem;
+      box-shadow: 0 15px 40px rgba(0, 48, 135, 0.15);
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.4s ease;
+    " 
+    onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 25px 60px rgba(0,48,135,0.25)';"
+    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 40px rgba(0,48,135,0.15)';">
+
+      <!-- Fondo sutil con bandera difuminada -->
+      <div style="
+        position: absolute;
+        inset: 0;
+        background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/1200px-Flag_of_Ecuador.svg.png') center/cover;
+        opacity: 0.07;
+        z-index: 0;
+      "></div>
+
+      <div style="position: relative; z-index: 1;">
+
+        <h2 style="
+          font-size: 2.2rem;
+          font-weight: 800;
+          color: #003087;
+          margin-bottom: 1.5rem;
+          letter-spacing: -0.5px;
+        ">
+          ${block.title || 'Nivel de Digitalización de Ecuador'}
+        </h2>
+
+        <div style="
+          font-size: 7rem;
+          font-weight: 900;
+          line-height: 1;
+          background: linear-gradient(90deg, #003087, #ce1126, #ffcd00, #003087);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin: 1rem 0;
+          animation: glow 3s ease-in-out infinite alternate;
+        ">
+          ${block.content || '52%'}
+        </div>
+
+        <div style="
+          font-size: 1.4rem;
+          font-weight: 600;
+          color: #4b5563;
+          margin-bottom: 1.5rem;
+        ">
+          Madurez Digital Actual
+        </div>
+
+        <p style="
+          font-size: 1.15rem;
+          line-height: 1.7;
+          color: #374151;
+          max-width: 90%;
+          margin: 0 auto;
+        ">
+          ${block.description || 'Promedio ponderado de métricas clave: GDII 32.4%, EGDI 78%, penetración 84%, PIB digital ~11%, pagos digitales 55%. Ecuador está en nivel **intermedio**: fuerte en acceso e inclusión, pero con rezagos en profundidad, uso productivo y productividad.'}
+        </p>
+
+      </div>
+    </div>
+
+    <style>
+      @keyframes glow {
+        from { text-shadow: 0 0 10px rgba(0,48,135,0.5); }
+        to   { text-shadow: 0 0 30px rgba(206,17,38,0.6), 0 0 50px rgba(255,205,0,0.5); }
+      }
+    </style>`;
+          }
+
+
+
+          // Bibliografía (nuevo tipo)
+          if (block.type === 'bibliografia') {
+            // Agregamos el label general como título de bloque
+            if (block.label) {
+              html += `<h3 style="margin-top:30px;margin-bottom:5px;" class="text-xl font-bold mt-8 mb-4">${block.label}</h3>`;
+            }
+
+            html += `<div class="grid gap-6">`;
+            block.items.forEach(ref => {
+              html += `
+      <div style="overflow:hidden" class="card p-4 shadow-sm rounded-lg border border-gray-200 hover:shadow-md transition-shadow overflow-hidden">
+        <h4 class="text-lg font-semibold mb-2">${ref.label}</h4>
+        <p class="text-gray-700 mb-1">${ref.description}</p>
+        <a href="${ref.url}" 
+   target="_blank" 
+   class="text-blue-600 underline" 
+   style="margin-right:1rem; 
+          display:inline-block; 
+          max-width:200px; 
+          white-space:nowrap; 
+          overflow:hidden; 
+          text-overflow:ellipsis;">
+   ${ref.url}
+</a>
+
+      </div>`;
+            });
+            html += `</div>`;
+          }
+
+
+        });
+      }
+
+
+      html += `</div>`;
+      contentArea.innerHTML = html;
+
+      // if (s.type === 'chart') renderChart(s);
+      if (s.blocks) renderCharts(s);
+
+    }
+
+    function renderCharts(section) {
+      const canvases = document.querySelectorAll('.chart-canvas');
+      let chartIndex = 0;
+
+      section.blocks.forEach(block => {
+        if (block.type !== 'chart') return;
+
+        let datasets = [];
+
+        // 🔹 Caso 1: Radar (datasets definidos)
+        if (block.datasets) {
+          datasets = block.datasets.map(ds => ({
+            label: ds.label,
+            data: ds.data,
+            fill: block.chartType === 'radar',
+            borderWidth: 2
+          }));
+        }
+
+        // 🔹 Caso 2: Bar / Line (values simples)
+        if (block.values) {
+          datasets = [{
+            label: block.title,
+            data: block.values,
+            backgroundColor: '#2563eb',
+            borderColor: '#1e40af',
+            borderWidth: 2
+          }];
+        }
+
+        new Chart(canvases[chartIndex], {
+          type: block.chartType,
+          data: {
+            labels: block.labels,
+            datasets
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: block.chartType === 'radar'
+              ? { r: { beginAtZero: true, max: 100 } }
+              : { y: { beginAtZero: true } }
+          }
+        });
+
+        chartIndex++;
+      });
+    }
+
+
+    toggleBtn.onclick = () => sidebar.classList.toggle('active');
+    initDashboard();
+  </script>
+
+</body>
+
+</html>
