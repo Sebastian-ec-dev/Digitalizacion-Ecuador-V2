@@ -563,7 +563,7 @@
         {
           "type": "chart",
           "chartType": "bar",
-          "title": "Contribución Economía Digital al PIB – Comparativo 2025",
+          "title": "Contribución Economía Digital – Comparativo 2025",
           "labels": ["China", "Chile", "Colombia", "Ecuador"],
           "values": [40, 21, 18, 11]
         }
@@ -992,7 +992,7 @@
           "title": "Nivel de Digitalización Total de Ecuador",
           "content": "52%",
           "style": "highlight-final",
-          "description": "Promedio ponderado basado en métricas clave:<br><br>• GDII Huawei 2025: 32.4%<br>• EGDI ONU 2024: 78%<br>• Penetración Internet: 84%<br>• Contribución Economía Digital al PIB: ~11%<br>• Pagos Digitales (% adultos): 55%<br><br>Ecuador está en un nivel <b>intermedio</b> de digitalización: fuerte en acceso e inclusión básica, pero con rezagos importantes en profundidad, uso productivo, adopción de IA y contribución económica real."
+          "description": "Promedio ponderado basado en métricas clave:<br><br>• GDII Huawei 2025: 32.4%<br>• EGDI ONU 2024: 78%<br>• Penetración Internet: 84%<br>• Contribución Economía Digital: ~11%<br>• Pagos Digitales (% adultos): 55%<br><br>Ecuador está en un nivel <b>intermedio</b> de digitalización: fuerte en acceso e inclusión básica, pero con rezagos importantes en profundidad, uso productivo, adopción de IA y contribución económica real."
         },
         {
           "type": "text",
@@ -1241,4 +1241,5 @@
     }
   }
 }
+
 
