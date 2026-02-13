@@ -883,7 +883,7 @@
             {
               "icon": "fas fa-dollar-sign text-warning",
               "label": "Economía Digital",
-              "value": "10-12 % PIB",
+              "value": "10-12 %",
               "description": "Contribución limitada. Proponer ley de economía digital que promueva innovación, superapps locales, e-commerce y productividad digital en MIPYMES (CECE: e-commerce 13% retail)."
             },
             {
@@ -1241,3 +1241,4 @@
     }
   }
 }
+
