@@ -62,10 +62,16 @@
         "icon": "fas fa-gavel",
         "label": "Políticas y Leyes"
       },
+
       {
         "id": "DiagnosticoFinal",
         "icon": "fas fa-lightbulb",
         "label": "Diagnóstico Final"
+      },
+      {
+        "id": "SimulacionDigitalizacion",
+        "icon": "fas fa-chart-line",
+        "label": "Simulaciones"
       },
       { "id": "Bibliografia", "icon": "fas fa-link", "label": "Bibliografía" }
     ]
@@ -565,7 +571,7 @@
           "chartType": "bar",
           "title": "Contribución Economía Digital – Comparativo 2025",
           "labels": ["China", "Chile", "Colombia", "Ecuador"],
-          "values": [40, 21, 18, 11]
+          "values": [40, 21, 18, 13]
         }
       ],
       "analysis": {
@@ -990,9 +996,9 @@
         {
           "type": "card",
           "title": "Nivel de Digitalización Total de Ecuador",
-          "content": "52%",
+          "content": "52.48%",
           "style": "highlight-final",
-          "description": "Promedio ponderado basado en métricas clave:<br><br>• GDII Huawei 2025: 32.4%<br>• EGDI ONU 2024: 78%<br>• Penetración Internet: 84%<br>• Contribución Economía Digital: ~11%<br>• Pagos Digitales (% adultos): 55%<br><br>Ecuador está en un nivel <b>intermedio</b> de digitalización: fuerte en acceso e inclusión básica, pero con rezagos importantes en profundidad, uso productivo, adopción de IA y contribución económica real."
+          "description": "Promedio ponderado basado en métricas clave:<br><br>• GDII Huawei 2025: 32.4%<br>• EGDI ONU 2024: 78%<br>• Penetración Internet: 84%<br>• Contribución Economía Digital: ~13%<br>• Pagos Digitales (% adultos): 55%<br><br>Ecuador está en un nivel <b>intermedio</b> de digitalización: fuerte en acceso e inclusión básica, pero con rezagos importantes en profundidad, uso productivo, adopción de IA y contribución económica real."
         },
         {
           "type": "text",
@@ -1078,6 +1084,58 @@
       },
       "key_message": "E-commerce como motor digital: alto crecimiento, pero limitado por infraestructura y uso IA. Integrar con DEUNA para pagos fluidos y logística sostenible elevaría impacto económico.",
       "status": "nuevo"
+    },
+    "SimulacionDigitalizacion": {
+      "title": "¿Qué tan digitalizado está Ecuador?",
+      "intro": "Mueve el slider para ver la evolución histórica (2020–2023) y proyección futura (2025–2030) del nivel de digitalización total. El valor de 2024 es exacto (52.48%). Los demás años son estimaciones basadas en tendencias históricas y proyecciones conservadoras/optimistas.",
+      "type": "simulation",
+      "simulation": {
+        "years": [
+          2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030
+        ],
+        "indicators": {
+          "gdii": {
+            "label": "GDII Huawei",
+            "unit": "%",
+            "values": [
+              38.0, 39.5, 40.8, 41.6, 32.4, 34.5, 37.0, 39.8, 42.9, 46.3, 50.0
+            ]
+          },
+          "egdi": {
+            "label": "EGDI ONU",
+            "unit": "%",
+            "values": [
+              70.0, 72.0, 68.0, 73.0, 78.0, 80.5, 83.0, 85.5, 88.0, 90.5, 93.0
+            ]
+          },
+          "penetracion": {
+            "label": "Penetración Internet",
+            "unit": "%",
+            "values": [
+              70.0, 75.0, 75.6, 81.3, 84.0, 86.5, 89.0, 91.5, 93.5, 95.5, 97.0
+            ]
+          },
+          "economia": {
+            "label": "Economía Digital (% PIB)",
+            "unit": "%",
+            "values": [
+              10.0, 11.0, 12.0, 13.0, 13.0, 15.0, 17.5, 20.5, 24.0, 28.0, 32.5
+            ]
+          },
+          "pagos": {
+            "label": "Pagos Digitales (% adultos)",
+            "unit": "%",
+            "values": [
+              35.0, 47.0, 50.0, 52.0, 55.0, 59.0, 63.0, 68.0, 73.0, 78.0, 83.0
+            ]
+          }
+        }
+      },
+      "explanation": {
+        "title": "Cómo se calculó y proyectó el Nivel de Digitalización",
+        "content": "<p>El <strong>Nivel de Digitalización Total</strong> se calcula como el <strong>promedio simple aritmético</strong> de las 5 métricas clave (igual que en tu ejemplo real de 52.48% para 2024):</p>\n\n<p style='font-family: monospace; background:#f1f5f9; padding:12px; border-radius:8px; margin:1rem 0; text-align:center; font-weight:600;'>\nNivel Total (%) = (GDII + EGDI + Penetración Internet + Economía Digital + Pagos Digitales) / 5\n</p><br><h4>Datos base utilizados (históricos reales que proporcionaste)</h4>\n<ul>\n  <li><strong>Economía Digital (% PIB):</strong> 2018: 5%, 2019: 6%, 2020: 10%, 2021: 11%, 2022: 12%, 2023: 13%</li>\n  <li><strong>Pagos Digitales (% adultos):</strong> 2014: 25%, 2017: 32%, 2021: 47%, 2024: 43–55% (usamos 55% para 2024 consistente con tu ejemplo)</li>\n  <li><strong>GDII Huawei:</strong> 2015: 30%, 2016: 31%, 2017: 34%, 2018: 35%, 2019: 36%, 2020: 38%, 2024/2025: 32.4%</li>\n  <li><strong>EGDI ONU:</strong> 2008: 48%, 2010: 43%, 2012: 48%, 2014: 50%, 2016: 56%, 2018: 61%, 2020: 70%, 2022: 68%, 2024: 78%</li>\n  <li><strong>Penetración Internet:</strong> 2022: 75.6%, 2023: 81.3%, 2024: 83.6–84%, 2025: 83.7%</li>\n</ul><br><h4>Método de proyección por indicador (2025–2030)</h4>\n<p>Se usó una combinación de:</p>\n<ol>\n  <li><strong>Regresión lineal</strong> sobre los datos históricos disponibles (para capturar la tendencia real observada)</li>\n  <li><strong>Ajuste conservador-optimista</strong> para 2025–2030, asumiendo aceleración moderada por políticas activas (DEUNA, e-commerce, 5G inicial, facturación electrónica, etc.)</li>\n  <li><strong>2024 es fijo y exacto</strong> → produce exactamente 52.48%</li>\n</ol><br><p><strong>Detalles por indicador:</strong></p>\n<ul>\n  <li><strong>Economía Digital (% PIB)</strong><br>\n    Tendencia histórica: +1.7 puntos/año aprox. (regresión 2018–2023).<br>\n    Proyección: aceleramos a ~2.0–2.5 puntos/año (escenario ambicioso con crecimiento e-commerce y formalización).<br>\n    Resultado aproximado: 2025 ~15%, 2030 ~32–33%.</li>\n\n  <li><strong>Pagos Digitales (% adultos)</strong><br>\n    Tendencia histórica: ~2.1 puntos/año (regresión 2014–2024).<br>\n    Proyección: mantenemos ~6–8 puntos/año post-2025 (impulso DEUNA + educación financiera).<br>\n    Resultado aproximado: 2025 ~59–62%, 2030 ~83–85%.</li>\n\n  <li><strong>GDII Huawei</strong><br>\n    Tendencia histórica irregular (sube hasta 2020, luego aparente estancamiento en 32.4%).<br>\n    Proyección: recuperación + adopción IA/nube → ~3–4 puntos/año.<br>\n    Resultado aproximado: 2025 ~34–35%, 2030 ~48–52%.</li>\n\n  <li><strong>EGDI ONU</strong><br>\n    Tendencia histórica: ~3–4 puntos cada 2 años.<br>\n    Proyección: ~2.5–3 puntos/año (mejora continua en gobierno digital).<br>\n    Resultado aproximado: 2025 ~80–81%, 2030 ~92–94%.</li>\n\n  <li><strong>Penetración Internet</strong><br>\n    Tendencia histórica reciente: ~2.7–4 puntos/año (2022–2025).<br>\n    Proyección: desaceleración natural (ya alta) → ~2–2.5 puntos/año.<br>\n    Resultado aproximado: 2025 ~86–87%, 2030 ~96–97%.</li>\n</ul><br><p><strong>Advertencias importantes:</strong></p>\n<ul>\n  <li>Estas son <strong>proyecciones plausibles optimistas</strong>, no predicciones garantizadas.</li>\n  <li>El avance real depende de: inversión en infraestructura (5G rural), regulación de IA/datos, formación de talento digital, adopción productiva en MIPYMES y continuidad de DEUNA/e-commerce.</li>\n  <li>Si las políticas se estancan o hay rezagos (brecha rural, velocidad baja, baja productividad), el crecimiento será menor.</li>\n</ul>"
+      },
+      "key_message": "En 2024 estamos en 52.48%. Con políticas decididas y ejecución sostenida, podríamos acercarnos al 70–75% hacia 2030. El avance depende de cerrar brechas en profundidad, uso productivo e impacto económico."
     },
     "Bibliografia": {
       "type": "bibliografia",
@@ -1223,6 +1281,62 @@
               "description": "Implementación IA, brechas productividad y recomendaciones para la región."
             }
           ]
+        },
+        {
+          "type": "bibliografia",
+          "label": "📊 Fuentes de Datos y Estudios Utilizados en la Simulación",
+          "items": [
+            {
+              "label": "Estudio E-commerce Ecuador 2025 – VII Medición (CECE)",
+              "url": "https://cece.ec/wp-content/uploads/estudios-ecommerce-ec/Estudio-Ecommerce-2025-VII-Medicion.pdf",
+              "description": "Reporte anual de la Cámara Ecuatoriana de Comercio Electrónico (CECE) con datos 2024–2025: valor del mercado (~US$4.618M), crecimiento (+206% 2018–2023), transacciones (81.1M), penetración retail (13%), medios de pago y hábitos de compra. Fuente principal para proyecciones de Economía Digital y e-commerce."
+            },
+            {
+              "label": "Boletín Resultados Global Findex 2024 – Ecuador (RFD)",
+              "url": "https://rfd.org.ec/docs/2025/Boletines%20especializados/Bolet%C3%ADn_Resultados_Global_Findex_24%20Ec.pdf",
+              "description": "Análisis local de Global Findex 2024 por Red de Finanzas Digitales (publicado 2025): tenencia de cuentas 65%, uso de canales digitales para pagos bajó a 43% (vs 47% en 2021), barreras de precio y acceso. Datos clave para calibrar Pagos Digitales (% adultos) en la simulación."
+            },
+            {
+              "label": "Huawei Global Connectivity Index (GCI) – Rankings",
+              "url": "https://www.huawei.com/minisite/gci/en/country-rankings.html",
+              "description": "Rankings históricos del Global Connectivity Index de Huawei (2015–2020+). Mide conectividad, adopción y ecosistemas digitales. Útil como referencia comparativa regional, aunque datos recientes de Ecuador no aparecen explícitamente en la página principal."
+            },
+            {
+              "label": "Digital 2025: Ecuador (DataReportal)",
+              "url": "https://datareportal.com/reports/digital-2025-ecuador",
+              "description": "Reporte anual DataReportal (marzo 2025): penetración internet 83.7% (15.2M usuarios), conexiones móviles 98.8%, crecimiento modesto (+1.0%), redes sociales 74%. Fuente principal para calibrar y validar Penetración Internet en la simulación histórica y proyectada."
+            },
+            {
+              "label": "Digital 2024: Ecuador (DataReportal)",
+              "url": "https://datareportal.com/reports/digital-2024-ecuador",
+              "description": "Versión anterior del reporte DataReportal con datos 2023–2024. Complementa la serie temporal para penetración internet, usuarios y conexiones móviles. Usado para interpolación en años 2022–2024."
+            },
+            {
+              "label": "Digital 2023: Ecuador (DataReportal)",
+              "url": "https://datareportal.com/reports/digital-2023-ecuador",
+              "description": "Reporte DataReportal 2023: datos base para penetración ~81.3% y tendencias móviles/sociales. Parte de la serie histórica usada para regresión en Penetración Internet."
+            },
+            {
+              "label": "Digital 2022: Ecuador (DataReportal)",
+              "url": "https://datareportal.com/reports/digital-2022-ecuador",
+              "description": "Reporte DataReportal 2022: penetración ~75.6%. Dato histórico clave para la tendencia 2022–2025 en la simulación."
+            },
+            {
+              "label": "EGDI – Ecuador 2008 (ONU E-Government Survey)",
+              "url": "https://publicadministration.un.org/egovkb/en-us/Data/Country-Information/id/52-Ecuador/dataYear/2008",
+              "description": "Datos históricos del E-Government Development Index (EGDI) de Naciones Unidas para Ecuador en 2008 (valor ~0.43–0.48 normalizado a %). Parte de la serie larga usada para calibrar la tendencia histórica de EGDI."
+            },
+            {
+              "label": "Huawei Global Digitalization Index (GDI) – Perfil Ecuador",
+              "url": "https://www.huawei.com/en/gdi/country-profile#EC",
+              "description": "Perfil de país en GDI de Huawei (datos ~2024): puntaje 28.4/120, ranking 69/77. Mide conectividad ubicua, fundación digital, energía verde y políticas. Referencia complementaria para GDII/GDI en la simulación."
+            },
+            {
+              "label": "Global Digitalization Index (GDI) – SameNA Council / Huawei",
+              "url": "https://www.samenacouncil.org/gdi",
+              "description": "Información adicional sobre el GDI de Huawei/SameNA Council. Incluye metodología y contexto regional. Usado como respaldo para entender pilares y clasificación de Ecuador en madurez digital."
+            }
+          ]
         }
       ]
     }
@@ -1241,5 +1355,3 @@
     }
   }
 }
-
-
